@@ -1,14 +1,21 @@
 class Solution {
-    public int missingNumber(int[] nums) {
-        int sum=0;
-int n=nums.length;
-    for(int i=0;i<nums.length;i++) {
-   
-        sum=sum+nums[i];
-   
-    }
-  int  arraysum=n*(n+1)/2;
-    return arraysum-sum;
+    public int missingNumber(int[] arr) {
+        int i=0;
+    while(i<arr.length){
+            if(arr[i]==i|| arr[i]==arr.length){
+                i++;
+            }
+            else{
+                 int idx= arr[i];
+                int temp=arr[i];
+                arr[i]=arr[idx];
+                arr[idx]=temp;
+            }
+        }
+        for(int j=0;j<arr.length;j++){
+            if(arr[j]!=j) return j;
 
+        }
+        return arr.length;
     }
 }
